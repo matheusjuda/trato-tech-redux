@@ -19,7 +19,7 @@ export default function Footer() {
         <FaInstagram {...iconeProps} />
       </div>
       <span>
-        Desenvolvido por Alura.
+        Desenvolvido por Judá.
       </span>
     </footer>
   )
