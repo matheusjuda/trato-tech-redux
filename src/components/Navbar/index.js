@@ -5,6 +5,7 @@ import {
   BsCart, BsCartCheckFill
 } from 'react-icons/bs';
 import Busca from 'components/Busca';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const iconeProps = {
   color: 'white',
@@ -12,26 +13,28 @@ const iconeProps = {
 };
 
 const Navbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   return (
     <nav className={styles.nav}>
-      <Logo className={styles.logo} />
+      <Logo className={styles.logo} onClick={() => navigate('/')} />
       <div className={styles.links}>
-        <a href='/' className={classNames(styles.link, {
-          [styles.selected]: window.location.pathname === '/'
+        <Link to='/' className={classNames(styles.link, {
+          [styles.selected]: location.pathname === '/'
         })}>
           Pagina Inicial
-        </a>
+        </Link>
       </div>
       <div className={styles.busca}>
         <Busca />
       </div>
       <div className={styles.icones}>
-        <a href='/carrinho'>
-          {window.location.pathname === '/carrinho'
+        <Link to='/carrinho'>
+          {location.pathname === '/carrinho'
             ? <BsCartCheckFill {...iconeProps} />
             : <BsCart {...iconeProps} />
           }
-        </a>
+        </Link>
 
       </div>
     </nav>
