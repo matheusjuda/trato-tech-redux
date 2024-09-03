@@ -7,7 +7,8 @@ import {
   FaCartPlus
 } from 'react-icons/fa';
 import { mudarFavorito } from 'store/reducers/itens';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { mudarCarrinho } from 'store/reducers/carrinho';
 
 const iconeProps = {
   size: 24,
@@ -24,10 +25,17 @@ export default function Item(props) {
     id,
   } = props;
   const dispatch = useDispatch();
+  const estaNoCarrinho = useSelector(state => state.carrinho.some(itemNoCarrinho => itemNoCarrinho.id === id)); //se esta no carrinho
 
   function resolverFavorito() {
     dispatch(mudarFavorito(id));
   }
+
+  function resolverCarrinho() {
+    dispatch(mudarCarrinho(id));
+  }
+
+  console.log(`STATUS ${estaNoCarrinho}`)
 
   return (
     <div className={styles.item}>
@@ -50,8 +58,9 @@ export default function Item(props) {
             }
             <FaCartPlus
               {...iconeProps}
-              color={false ? '#1875E8' : iconeProps.color}
+              color={estaNoCarrinho ? '#1875E8' : iconeProps.color} //Se está no carrinho muda de cor
               className={styles['item-acao']}
+              onClick={resolverCarrinho}
             />
           </div>
         </div>
