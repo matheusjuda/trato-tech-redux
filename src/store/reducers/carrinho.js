@@ -24,5 +24,5 @@ const carrinhoSlice = createSlice({
 export const { mudarCarrinho } = carrinhoSlice.actions;
 
 export default carrinhoSlice.reducer;
-//Se eu quiser mudar o estado, remover ou adicionar carrinho = Immer (Imutabilidade )
+//Se eu quiser mudar o estado (remover ou adicionar carrinho) = Immer (Imutabilidade )
 // https://redux-toolkit.js.org/usage/immer-reducers
