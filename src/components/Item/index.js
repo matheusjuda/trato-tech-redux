@@ -41,7 +41,7 @@ export default function Item(props) {
 
   return (
     <div className={classNames(styles.item, {
-      [styles.itemNoCarrinho]: carrinho,//Se tiver o props carrinho passa estilo novo
+      [styles.itemNoCarrinho]: carrinho,//Se tiver o props carrinho true passa estilo novo
     })}>
       <div className={styles['item-imagem']}>
         <img src={foto} alt={titulo} />

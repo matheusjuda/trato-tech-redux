@@ -5,13 +5,13 @@ import TituloSemImagem from './TituloSemImagem';
 export default function Header({ titulo, descricao, className = '', imagem }) {
   return (
     <header className={styles.header}>
-      {titulo && !imagem &&
+      {titulo && !imagem && //Se tiver titulo e não tiver imagem renderiza:
         <TituloSemImagem
           titulo={titulo}
           descricao={descricao}
         />
       }
-      {titulo && imagem &&
+      {titulo && imagem && //Se tiver titulo e imagem renderiza:
         <TituloComImagem
           titulo={titulo}
           descricao={descricao}
