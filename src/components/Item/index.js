@@ -9,6 +9,7 @@ import {
 import { mudarFavorito } from 'store/reducers/itens';
 import { useDispatch, useSelector } from 'react-redux';
 import { mudarCarrinho } from 'store/reducers/carrinho';
+import classNames from 'classnames';
 
 const iconeProps = {
   size: 24,
@@ -23,6 +24,7 @@ export default function Item(props) {
     descricao,
     favorito,
     id,
+    carrinho,
   } = props;
   const dispatch = useDispatch();
   const estaNoCarrinho = useSelector(state => state.carrinho.some(itemNoCarrinho => itemNoCarrinho.id === id)); //se esta no carrinho
@@ -38,7 +40,9 @@ export default function Item(props) {
   console.log(`STATUS ${estaNoCarrinho}`)
 
   return (
-    <div className={styles.item}>
+    <div className={classNames(styles.item, {
+      [styles.itemNoCarrinho]: carrinho,//Se tiver o props carrinho passa estilo novo
+    })}>
       <div className={styles['item-imagem']}>
         <img src={foto} alt={titulo} />
       </div>
