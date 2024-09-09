@@ -45,7 +45,7 @@ export default function Item(props) {
     dispatch(mudarCarrinho(id));
   }
 
-  console.log(`STATUS ${estaNoCarrinho}`)
+
 
   return (
     <div className={classNames(styles.item, {
